@@ -6,7 +6,7 @@ let welcomeMessage = "Welcome to Nobody save's the world";
 
 let currentHealth = 400;
 
-console.log(currentHealth);
+// console.log(currentHealth);
 
 let maxHealth = 500;
 
@@ -14,7 +14,7 @@ let deathHealth = 0;
 
 currentHealth = currentHealth - 10;
 
-console.log(currentHealth);
+// console.log(currentHealth);
 
 const wizardNpcOpeningMessage = "Where are your pants?";
 
@@ -23,7 +23,10 @@ const wizardNpcOpeningMessage = "Where are your pants?";
 const avatars = {
   rat: {
     description: "a chompy little friend",
-    attacks: [{ label: "Gnaw", damage: 15, mana: 5 }, { label: "Consume" }],
+    attacks: [
+      { label: "Gnaw", damage: 15, mana: 5 },
+      { label: "Consume", damage: 10, posion: 20 },
+    ],
     stats: [
       { label: "Health", value: 945 },
       { label: "Mana", value: 125 },
@@ -42,18 +45,23 @@ const avatars = {
     ],
   },
 };
-// DONE: FIX CURRENT AVATAR STATS BUG
 
-const currentAvatar = { stats: "Blah" };
 const player = {
   name: "Nobody",
   currentAvatar: avatars.rat,
   stats: null,
 };
-// assignment approach initializes the value in the variable declaration, and then is allocated here
+
+const enemy = {
+  name: "Scarab",
+  maxHealth: 400,
+  currentHealth: 400,
+  attackDamage: 5,
+  live: true,
+};
+
 player.stats = player.currentAvatar.stats;
 
-// Demonstrates that the fix worked
 console.log(player.stats);
 
 const wizardNPC = {
@@ -63,3 +71,23 @@ const wizardNPC = {
   hasDoneStartDialog: true,
   postStartDialog: "Go talk to Nostramagus",
 };
+
+logPlayerName();
+
+function logPlayerName() {
+  // template literal
+  console.log(`Player Name: ${player.name}`);
+}
+
+const logEnemyName = () => {
+  // old school
+  console.log("Enemy Name: " + enemy.name);
+};
+
+function getPlayerName() {
+  return player.name;
+}
+
+logPlayerName();
+// console.log(getPlayerName());
+logEnemyName();
