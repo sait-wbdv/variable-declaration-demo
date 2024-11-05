@@ -46,6 +46,19 @@ const avatars = {
   },
 };
 
+function logAvatarStats(avatar) {
+  // error handling example if check
+  if (!avatar.stats) {
+    console.error("parameter does not have a stats property");
+    return;
+  }
+  console.log(avatar.stats);
+}
+
+logAvatarStts(avatars);
+
+// logAvatarStats(avatars.nobody);
+
 const player = {
   name: "Nobody",
   currentAvatar: avatars.rat,
@@ -62,7 +75,7 @@ const enemy = {
 
 player.stats = player.currentAvatar.stats;
 
-console.log(player.stats);
+// console.log(player.stats);
 
 const wizardNPC = {
   name: "Wizard",
@@ -73,6 +86,13 @@ const wizardNPC = {
 };
 
 logPlayerName();
+
+function logName(zaboomafoo) {
+  console.log(zaboomafoo);
+}
+function allCapsName(name) {
+  return name.toUpperCase();
+}
 
 function logPlayerName() {
   // template literal
@@ -91,3 +111,6 @@ function getPlayerName() {
 logPlayerName();
 // console.log(getPlayerName());
 logEnemyName();
+
+logName(allCapsName(player.name));
+logName(enemy.name);
